@@ -67,16 +67,7 @@
 			SVGUseElement *useElement = [[SVGUseElement alloc] initWithQualifiedName:qualifiedName inNameSpaceURI:XMLNSURI attributes:attributes];
 			
 			[useElement postProcessAttributesAddingErrorsTo:parseResult]; // handles "transform" and "style"
-			
-			if( [attributes valueForKey:@"x"] != nil )
-				useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"x"]) value]];
-			if( [attributes valueForKey:@"y"] != nil )
-				useElement.y = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"y"]) value]];
-			if( [attributes valueForKey:@"width"] != nil )
-				useElement.width = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"width"]) value]];
-			if( [attributes valueForKey:@"height"] != nil )
-				useElement.height = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"height"]) value]];
-			
+
 			if( [attributes valueForKey:@"href"] != nil )
 			{
 				NSString* linkHref = [((Attr*)[attributes valueForKey:@"href"]) value];
@@ -98,6 +89,15 @@
 				
 				useElement.instanceRoot = [self convertSVGElementToElementInstanceTree:linkedElement outermostUseElement:useElement];
 			}
+
+            if( [attributes valueForKey:@"x"] != nil )
+                useElement.x = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"x"]) value]];
+            if( [attributes valueForKey:@"y"] != nil )
+                useElement.y = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"y"]) value]];
+            if( [attributes valueForKey:@"width"] != nil )
+                useElement.width = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"width"]) value]];
+            if( [attributes valueForKey:@"height"] != nil )
+                useElement.height = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"height"]) value]];
 			
 			return useElement;
 		}
