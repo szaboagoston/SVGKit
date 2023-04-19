@@ -77,12 +77,9 @@
 			if( [attributes valueForKey:@"height"] != nil )
 				useElement.height = [SVGLength svgLengthFromNSString:[((Attr*)[attributes valueForKey:@"height"]) value]];
 			
-			NSString* hrefAttribute = [useElement getAttributeNS:@"http://www.w3.org/1999/xlink" localName:@"href"];
-			
-			NSAssert( [hrefAttribute length] > 0, @"Found an SVG <use> tag that has no 'xlink:href' attribute. File is invalid / don't know how to parse this" );
-			if( [hrefAttribute length] > 0 )
+			if( [attributes valueForKey:@"href"] != nil )
 			{
-				NSString* linkHref = [((Attr*)[attributes valueForKey:@"xlink:href"]) value];
+				NSString* linkHref = [((Attr*)[attributes valueForKey:@"href"]) value];
                 /** support `url(#id) funcIRI as well to follow SVG spec` */
                 if ([linkHref hasPrefix:@"url"]) {
                     NSRange range = NSMakeRange(4, linkHref.length - 5);
