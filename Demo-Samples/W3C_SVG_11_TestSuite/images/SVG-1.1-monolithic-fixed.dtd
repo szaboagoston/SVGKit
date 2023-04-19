@@ -409,7 +409,7 @@
 <!ATTLIST use
 	%stdAttrs; 
 	%xlinkRefAttrsEmbed; 
-	xlink:href %URI; #REQUIRED
+	href %URI; #REQUIRED
 	%testAttrs; 
 	%langSpaceAttrs; 
 	externalResourcesRequired %Boolean; #IMPLIED
